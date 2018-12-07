@@ -1,4 +1,4 @@
-package com.purgae.raycasting;
+package com.purgae.raycasting.misc;
 
 public class Tools {
 	public static void log(LogLevel level, String msg) {
