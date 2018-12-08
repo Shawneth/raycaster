@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Graphics2D;
 
 import com.purgae.raycasting.Eye;
-import com.purgae.raycasting.Map;
+import com.purgae.raycasting.GameMap;
 import com.purgae.raycasting.misc.LogLevel;
 import com.purgae.raycasting.misc.Tools;
 
@@ -24,7 +24,7 @@ public class World extends Renderer{
 	String angleString = "Angle: ";
 	
 	Eye eye = new Eye();
-	Map map = new Map();
+	GameMap map = new GameMap(10,10,"Name");
 	
 	float stateTime = 0;
 	float r_stateTime = 0;
@@ -67,7 +67,7 @@ public class World extends Renderer{
 		graphics.setColor(Color.BLACK);
 		int width = getWidth();
 		for(int i = 0; i < width; i++) {
-			graphics.drawLine(1, 0, i, getHeight());
+			graphics.drawLine(i, 0, i, getHeight());
 		}
 	}
 	
