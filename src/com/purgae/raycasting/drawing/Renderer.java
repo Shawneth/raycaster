@@ -1,6 +1,7 @@
 package com.purgae.raycasting.drawing;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,11 +10,9 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-public abstract class Renderer extends Canvas{
-
-	private static final long serialVersionUID = 1L;
+public abstract class Renderer extends Canvas {
 	
-	private JFrame frame = new JFrame();
+	protected JFrame frame = new JFrame();
 	private BufferStrategy bs;
 	
 	public Renderer() {	
@@ -45,12 +44,11 @@ public abstract class Renderer extends Canvas{
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.setVisible(true);
     	frame.add(this);
-    	
+    	this.setSize(640, 480);
     	setIgnoreRepaint(true);
         
         createBufferStrategy(2);
         bs = getBufferStrategy();
-        
     }
 	
 	public abstract void update(float updateTime);
@@ -58,7 +56,8 @@ public abstract class Renderer extends Canvas{
 	
 	public void render() {
 		Graphics2D g2d = (Graphics2D) bs.getDrawGraphics();
-		super.paint(g2d);
+		g2d.setColor(Color.WHITE);
+		g2d.fillRect(0, 0, getWidth(), getHeight());
 		draw(g2d);
 		if(!bs.contentsLost())
 			bs.show();
